@@ -1,0 +1,137 @@
+{
+  "personal": {
+    "name": "Gaurav Khanzode",
+    "title": "Senior Software Engineer",
+    "tagline": "8 years of building scalable web platforms, distributed systems, and REST APIs.",
+    "bio": "I'm a Senior Software Engineer with 8 years of experience designing and building robust web applications, distributed systems, and high-performance REST APIs. I've worked across the full stack — from crafting intuitive React frontends to architecting resilient backend services with Java and Node.js. Currently at Autodesk, I contribute to large-scale platform engineering, having led a team of 5 and driven initiatives around service regionalization. I'm passionate about clean architecture, developer tooling, and shipping products that scale.",
+    "location": {
+      "city": "Pune",
+      "state": "Maharashtra",
+      "country": "India"
+    },
+    "contact": {
+      "email": "er.gauravkhanzode@gmail.com",
+      "phone": "+91 8007926464"
+    },
+    "photo": {
+      "src": "https://lh3.googleusercontent.com/d/1r6cOvaw3NviL2NR0Gcg2w242BCzT-YF7"
+    },
+    "website": "https://gaurav2501.github.io"
+  },
+  "social": {
+    "github": "https://github.com/gaurav2501",
+    "linkedin": null,
+    "twitter": null,
+    "resume": null
+  },
+  "skills": {
+    "languages": ["Java", "JavaScript", "TypeScript"],
+    "frameworks": ["Spring Boot", "Node.js", "React"],
+    "databases": ["MySQL", "DynamoDB"],
+    "cloud": ["AWS"],
+    "devops": ["Docker", "Kubernetes", "OpenShift", "CI/CD"],
+    "protocols": ["REST", "gRPC", "GraphQL"],
+    "tools": ["Claude Code", "Cursor"]
+  },
+  "experience": [
+    {
+      "company": "Autodesk",
+      "role": "Senior Software Engineer",
+      "location": "Pune, Maharashtra",
+      "startDate": "2022-10",
+      "endDate": null,
+      "current": true,
+      "highlights": [
+        "Led a team of 5 engineers on platform initiatives",
+        "Drove service regionalization for improved availability and compliance across regions",
+        "Contributed to Fusion 360 desktop and web platform engineering"
+      ]
+    },
+    {
+      "company": "Volkswagen Group Digital Solutions",
+      "role": "Software Engineer",
+      "location": "Pune, Maharashtra",
+      "startDate": "2021-03",
+      "endDate": "2022-10",
+      "current": false,
+      "highlights": [
+        "Worked as an individual contributor on distributed backend systems",
+        "Built and maintained scalable REST APIs"
+      ]
+    },
+    {
+      "company": "Lighthouse Info Systems Pvt Ltd",
+      "role": "Software Developer",
+      "location": "Nagpur, Maharashtra",
+      "startDate": "2018-06",
+      "endDate": "2021-02",
+      "current": false,
+      "highlights": [
+        "Worked as a Java developer",
+        "Worked on TaxCPC portal in tax assessment project"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering",
+      "field": "Computer Science & Engineering",
+      "institution": "RTM Nagpur University, Nagpur, Maharashtra",
+      "graduationYear": "2017"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Claude Code in Action",
+      "issuer": "Anthropic",
+      "platform": "Claude Academy",
+      "link": "https://academy.claude.com/verify/c742c4e5cddc47226acd7b34993c26d7"
+    },
+    {
+      "name": "Claude Code 101",
+      "issuer": "Anthropic",
+      "platform": "Claude Academy",
+      "link": "https://academy.claude.com/verify/34b267f8b89c250680b0361c6078e377"
+    },
+    {
+      "name": "Master Spring Boot Microservices with CQRS & Event Sourcing",
+      "issuer": "Udemy",
+      "platform": "Udemy",
+      "link": "https://drive.google.com/file/d/1Hv1Bpf9bIp4LPCjaL4jJIaW9quhh_GPU/view?pli=1"
+    },
+    {
+      "name": "React.js Essential Training",
+      "issuer": "LinkedIn Learning",
+      "platform": "LinkedIn Learning",
+      "link": "https://drive.google.com/file/d/1v6itxTtQC8Gk1_OMjvC0xOZQ1dVWayhP/view"
+    },
+    {
+      "name": "Learning Kubernetes",
+      "issuer": "LinkedIn Learning",
+      "platform": "LinkedIn Learning",
+      "link": "https://drive.google.com/file/d/1HsgSYhsGsZ2WtUxa6OZAkUaFR-c3fF9h/view"
+    },
+    {
+      "name": "Scrum: The Basics",
+      "issuer": "LinkedIn Learning",
+      "platform": "LinkedIn Learning",
+      "link": "https://drive.google.com/file/d/1I3SRT4fpM7FwrXPfNqfY3Myhc2CF2CRT/view"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Fusion 360 Desktop & Web Platform",
+      "description": "Contributed to the core platform engineering of Autodesk's Fusion 360 — a professional-grade 3D CAD/CAM tool available on desktop and web (Team Collaboration). Worked on distributed backend services and platform infrastructure supporting millions of users.",
+      "tech": ["Java", "Spring Boot", "Node.js", "React", "AWS", "Docker"],
+      "link": null,
+      "type": "professional"
+    },
+    {
+      "name": "Portfolio Website",
+      "description": "Personal portfolio built with React and Vite, showcasing experience, skills, and projects. Designed for performance and easy iteration across versions.",
+      "tech": ["React", "Vite", "JavaScript"],
+      "link": "https://gaurav2501.github.io",
+      "type": "personal"
+    }
+  ]
+}

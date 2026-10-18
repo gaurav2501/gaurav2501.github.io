@@ -1,29 +1,22 @@
-# portfolio-er-gaurav
+# Gaurav Khanzode — Senior Software Engineer
 
-Personal professional portfolio website for Gaurav — built to showcase skills, experience, and projects.
+Personal portfolio of Gaurav Khanzode, a Senior Software Engineer with 8 years of experience building web platforms, distributed systems, and REST APIs.
 
-## Intent
+**Live at:** https://gaurav2501.github.io
 
-This repo is the home for my portfolio site. The goal is to build a clean, fast, and modern web presence that reflects who I am as an engineer — without unnecessary complexity.
+---
+
+## About
+
+This is Gaurav's professional portfolio showcasing his experience, skills, and projects across full-stack web development, distributed systems, and cloud infrastructure.
 
 ## Tech Stack
 
-- **React** (via Vite) — component-based UI
-- **Node.js** — local dev tooling and build pipeline
+- **React** + **Vite** — component-based UI with fast builds
+- **GitHub Actions** — automated deploy on push to `main`
+- **GitHub Pages** — static hosting
 
-## Upcoming Work
+## Contact
 
-- [ ] Design and layout planning (sections: Hero, About, Skills, Experience, Projects, Contact)
-- [ ] Implement base layout and navigation
-- [ ] Build individual page sections
-- [ ] Add project showcase with links and descriptions
-- [ ] Responsive design and mobile polish
-- [ ] Accessibility pass
-- [ ] Deploy to a hosting platform (e.g. GitHub Pages, Vercel, or Netlify)
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
+- Email: er.gauravkhanzode@gmail.com
+- Location: Pune, Maharashtra, India

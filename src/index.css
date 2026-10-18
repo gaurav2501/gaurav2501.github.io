@@ -1,31 +1,340 @@
+/* ── Design Tokens ─────────────────────────────────────────────── */
+:root {
+  /* Background layers */
+  --bg-base:        #faf9f7;
+  --bg-surface:     #f3f1ec;
+  --bg-subtle:      #ede9e3;
+
+  /* Text */
+  --text-primary:   #1a1a18;
+  --text-secondary: #5c5a56;
+  --text-muted:     #9a9790;
+
+  /* Accent — Claude's warm coral/orange */
+  --accent:         #d97757;
+  --accent-hover:   #c96644;
+  --accent-subtle:  #fdf0eb;
+
+  /* Borders */
+  --border:         #e2ddd6;
+  --border-strong:  #ccc8c0;
+
+  /* Misc */
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      16px;
+
+  /* Spacing scale */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  72px;
+  --space-10: 112px;
+
+  /* Max content width */
+  --max-w: 760px;
+
+  /* Grid pattern */
+  --grid-color:      rgba(160, 148, 132, 0.38);
+  --grid-highlight:  rgba(160, 148, 132, 0.85);
+  --grid-size:       28px;
+  --dot-size:        1.5px;
+
+  /* Mouse lens position (updated by useMouseGrid) */
+  --mouse-x: -999px;
+  --mouse-y: -999px;
+}
+
+/* ── Dark mode tokens ──────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-base:        #1a1917;
+  --bg-surface:     #222220;
+  --bg-subtle:      #2a2927;
+
+  --text-primary:   #f0ede8;
+  --text-secondary: #a8a49e;
+  --text-muted:     #6b6864;
+
+  --accent:         #e8895e;
+  --accent-hover:   #f09a70;
+  --accent-subtle:  #2e1f16;
+
+  --border:         #2e2d2b;
+  --border-strong:  #3d3c39;
+
+  --grid-color:      rgba(255, 255, 255, 0.13);
+  --grid-highlight:  rgba(255, 255, 255, 0.55);
+}
+
+/* Smooth palette transition when toggling */
+html {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ── Mouse grid lens ───────────────────────────────────────────── */
+/*
+  body::after renders a second dot grid identical to body::before,
+  but at higher opacity. It is masked by a radial gradient centred
+  on the mouse position (--mouse-x / --mouse-y set by useMouseGrid).
+  Result: the grid appears denser/brighter in a soft halo around
+  the cursor, giving a "dots squeeze toward pointer" feel.
+  On touch/no-mouse devices the vars stay at -999px so the lens
+  is invisible.
+*/
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, var(--grid-highlight) var(--dot-size), transparent var(--dot-size));
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+  /* Mask fades to transparent outside the lens radius */
+  -webkit-mask-image: radial-gradient(
+    circle 120px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle 120px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    transparent 100%
+  );
+  transition: -webkit-mask-image 0.08s ease, mask-image 0.08s ease;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #0f0f0f;
-  color: #ececec;
-  min-height: 100vh;
+/* ── Base ──────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
-.app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  gap: 1rem;
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* ── Grid background ───────────────────────────────────────────── */
+/*
+  Two radial gradients at each grid intersection create a faint dot.
+  The grid sits fixed behind all page content via a ::before pseudo on body.
+*/
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, var(--grid-color) var(--dot-size), transparent var(--dot-size));
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: 0 0;
+}
+
+/* Root and all content stack above the grid */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Typography ────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
 p {
-  font-size: 1.1rem;
-  color: #999;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Mono font for tags, code, labels */
+code, .mono {
+  font-family: 'DM Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+}
+
+/* ── Layout helpers ────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.section {
+  padding: var(--space-9) 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Section label ─────────────────────────────────────────────── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+/* ── Tag / pill ────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 400;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  letter-spacing: 0.01em;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+
+/* ── Mobile responsiveness ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  :root {
+    --space-9:  52px;
+    --space-10: 80px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.35rem; }
+
+  /* Skills: stack label above tags on small screens */
+  .skills-row {
+    flex-direction: column !important;
+    gap: var(--space-2) !important;
+  }
+  .skills-label {
+    min-width: unset !important;
+  }
+
+  /* Experience/Projects: full width cards */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* About stats: 2-col on mobile */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Cert rows: allow name to wrap */
+  .cert-name {
+    white-space: normal !important;
+  }
+}
+
+/* ── Scroll entrance animations ────────────────────────────────── */
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity  0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Stagger children inside a reveal parent */
+[data-reveal-group="pending"] > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity  0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal-group="visible"] > *:nth-child(1)  { transition-delay: 0.05s; }
+[data-reveal-group="visible"] > *:nth-child(2)  { transition-delay: 0.12s; }
+[data-reveal-group="visible"] > *:nth-child(3)  { transition-delay: 0.19s; }
+[data-reveal-group="visible"] > *:nth-child(4)  { transition-delay: 0.26s; }
+[data-reveal-group="visible"] > *:nth-child(5)  { transition-delay: 0.33s; }
+[data-reveal-group="visible"] > *:nth-child(6)  { transition-delay: 0.40s; }
+[data-reveal-group="visible"] > *:nth-child(n+7){ transition-delay: 0.46s; }
+
+[data-reveal-group="visible"] > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity  0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal="pending"],
+  [data-reveal-group="pending"] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

@@ -1,10 +1,25 @@
-function App() {
+import Navbar          from './components/Navbar'
+import Hero            from './components/Hero'
+import About           from './components/About'
+import Skills          from './components/Skills'
+import Experience      from './components/Experience'
+import Projects        from './components/Projects'
+import Certifications  from './components/Certifications'
+import Contact         from './components/Contact'
+
+export default function App() {
   return (
-    <div className="app">
-      <h1>Gaurav&apos;s Portfolio</h1>
-      <p>Coming soon — building something worth showing.</p>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Certifications />
+        <Contact />
+      </main>
+    </>
   )
 }
-
-export default App
